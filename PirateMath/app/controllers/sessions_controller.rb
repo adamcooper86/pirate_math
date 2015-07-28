@@ -1,13 +1,14 @@
 class SessionsController < ApplicationController
   def new
+    render 'new', layout: !request.xhr?
   end
 
   def create
     if @user = authenticate
       log_in @user
-      render "users/show"
+      render "users/show", layout: !request.xhr?
     else
-      render 'new'
+      render 'new', layout: !request.xhr?
     end
   end
 

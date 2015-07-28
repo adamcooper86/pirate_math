@@ -4,20 +4,20 @@ class PracticesController < ApplicationController
      @practice = Practice.find(params[:id])
      @practice_data = @practice.practice_data
      p @practice_data
-     render 'show'
+     render 'show', :layout => !request.xhr?
   end
 
   def edit
     @user = User.find_by(id: params[:id])
     @practice = Practice.find_by(id: params[:id])
     @question_data = @practice.question_hash
-    render 'edit'
+    render 'edit', :layout => !request.xhr?
   end
 
   def index
     @user = User.find(params[:user_id])
     if current_user == @user
-      render 'index'
+      render 'index', :layout => !request.xhr?
     else
       log_out
       redirect_to root_path
@@ -42,7 +42,7 @@ class PracticesController < ApplicationController
       @question = @practice.questions.last
       @question.update(answer: params[:answer])
       @question_data = @practice.question_hash
-      render 'edit'
+      render 'edit', :layout => !request.xhr?
     end
   end
 

@@ -4,11 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/css/normalize.css"/>
-  <link rel="stylesheet" href="/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="/css/bootstrap-theme.min.css"/>
-  <link rel="stylesheet" href="/css/application.css"/>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
 
   <title>Pirate Math | Math fluency practice with spunk</title>
   <!--[if lt IE 9]>
@@ -40,9 +36,7 @@
             <li class="public" <% if current_user %> style="display: none;" <% end %>><a id="contact-link" class="navigation" href="/contact">Contact</a></li>
           </ul>
           <ul class="nav navbar-nav pull-right">
-            <li>
-              <%= link_to "Log Out", logout_path, class: "private authentication", id: "logout"%>
-            </li>
+            <li <% unless current_user %> style="display: none;"<% end %>><%= link_to "Log Out", logout_path, class: "private authentication", id: "logout"%></li>
             <li class="public" <% if current_user %> style="display: none;" <% end %>><a class="navigation" id="sign-up-link" href="/users/new">Sign Up</a></li>
             <li class="public" <% if current_user %> style="display: none;" <% end %>>
               <%= link_to "Sign In", login_path, class: "navigation", id: "sign-in-link" %>
@@ -61,12 +55,9 @@
 <div id="pirateship"></div>
 <div id="wave1" class="wave"></div>
   <!-- All Javascrip files -->
-  <script src="/js/jquery.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application' %>
   <script src="//www.google.com/jsapi"></script>
-  <script src="/js/chartkick.js"></script>
-  <script src="/js/jquery.spritely.js"></script>
-  <script src="/js/animation.js"></script>
+
+
 </body>
 </html>
