@@ -2,6 +2,6 @@
   <div id="bio-box" class="container rounded">
     <h1 id="<%= @user.id %>" class='bio text-primary'><%= @user.username %></h1>
     <%= link_to 'edit', edit_user_path(@user) %>
-    <a id="student-practices" class="navigation" href='/students/<%= @user.id %>/practices'>Practices</a>
+    <%= link_to 'Practices', user_practices_path(@user) %>
   </div>
 <section>

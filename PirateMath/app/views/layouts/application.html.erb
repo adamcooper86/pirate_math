@@ -40,12 +40,13 @@
             <li class="public" <% if current_user %> style="display: none;" <% end %>><a id="contact-link" class="navigation" href="/contact">Contact</a></li>
           </ul>
           <ul class="nav navbar-nav pull-right">
-            <li><form class="private authentication" id="logout" action="/sessions" method="post" <% if current_user %> style="display: block;" <% end %>>
-              <input type="hidden" name="_method" value="delete">
-              <input type="submit" value="Log Out" class="btn btn-default">
-            </form></li>
+            <li>
+              <%= link_to "Log Out", logout_path, class: "private authentication", id: "logout"%>
+            </li>
             <li class="public" <% if current_user %> style="display: none;" <% end %>><a class="navigation" id="sign-up-link" href="/users/new">Sign Up</a></li>
-            <li class="public" <% if current_user %> style="display: none;" <% end %>><a class="navigation" id="sign-in-link" href="/sessions/new">Sign In</a></li>
+            <li class="public" <% if current_user %> style="display: none;" <% end %>>
+              <%= link_to "Sign In", login_path, class: "navigation", id: "sign-in-link" %>
+            </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

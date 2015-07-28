@@ -1,0 +1,6 @@
+<div id="practice-box" class="container rounded">
+  <h1 class='practice text-primary'>Good job, <%= @user.first_name %></h1>
+  <p class='practice'>You got <%= @practice_data[:right] %> correct!</p>
+  <p class='practice'>You got <%= @practice_data[:wrong] %> wrong.</p>
+  <%= link_to "done", user_path(@user) %>
+</div>

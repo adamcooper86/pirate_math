@@ -1,0 +1,23 @@
+<% success_message = "<h1>Yay, you got it correct! Keep it up!</h1>" %>
+<% fail_message = "<h1>Oops, not there yet matee' Keep focused!</h1>" %>
+<% if @question_data[:previous] %>
+  <% if @question_data[:previous][:answer] == @question_data[:previous][:student_answer] %>
+    <% alert_class = "success" %>
+    <% alert_message = success_message %>
+  <% else %>
+    <% alert_class = "fail" %>
+    <% alert_message = fail_message %>
+  <% end %>
+<% else %>
+  <% alert_class="" && alert_message = "" %>
+<% end %>
+
+
+<div id="question-viewport">
+  <div class="alert <%= alert_class %>"><%= alert_message %></div>
+  <%= form_for :question, url: user_practice_path, method: "patch" do |f|%>
+    <%= f.label :answer, @question_data[:next][:prompt], id: "question" %>
+    <%= f.text_field :answer %>
+    <%= f.submit "Answer" %>
+  <% end %>
+</div>
