@@ -1,14 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>PirateMath</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/normalize.css"/>
+  <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="/css/bootstrap-theme.min.css"/>
+  <link rel="stylesheet" href="/css/application.css"/>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <title>Pirate Math | Math fluency practice with spunk</title>
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
   <%= csrf_meta_tags %>
+
 </head>
 <body>
-
-<%= yield %>
-
+<main class="container-fluid">
+  <header>
+     <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand navigation" href="/">Pirate Math</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li id="dashboard-button-li" class="private" <% if current_user %> style="display: block;" <% end %>><a class="navigation" id="dashboard" href="/users/<% if current_user %><%=current_user.id%><% end %>">Dashboard</a></li>
+            <li id="support-button-li" class="private" <% if current_user %> style="display: block;" <% end %>><a class="navigation" href="/support">Support</a></li>
+            <li class="public" <% if current_user %> style="display: none;" <% end %>><a id="features-link" class="navigation" href="/features">Features</a></li>
+            <li class="public" <% if current_user %> style="display: none;" <% end %>><a id="contact-link" class="navigation" href="/contact">Contact</a></li>
+          </ul>
+          <ul class="nav navbar-nav pull-right">
+            <li><form class="private authentication" id="logout" action="/sessions" method="post" <% if current_user %> style="display: block;" <% end %>>
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" value="Log Out" class="btn btn-default">
+            </form></li>
+            <li class="public" <% if current_user %> style="display: none;" <% end %>><a class="navigation" id="sign-up-link" href="/users/new">Sign Up</a></li>
+            <li class="public" <% if current_user %> style="display: none;" <% end %>><a class="navigation" id="sign-in-link" href="/sessions/new">Sign In</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+  </header>
+  <article class="container panel" id="content">
+    <%= yield %>
+  </article>
+</main>
+<div id="wave3" class="wave"></div>
+<div id="wave2" class="wave"></div>
+<div id="pirateship"></div>
+<div id="wave1" class="wave"></div>
+  <!-- All Javascrip files -->
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="//www.google.com/jsapi"></script>
+  <script src="/js/chartkick.js"></script>
+  <script src="/js/jquery.spritely.js"></script>
+  <script src="/js/animation.js"></script>
 </body>
 </html>
