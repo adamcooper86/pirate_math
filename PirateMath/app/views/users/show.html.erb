@@ -1,0 +1,7 @@
+<section id="student-dashboard-wrapper">
+  <div id="bio-box" class="container rounded">
+    <h1 id="<%= @user.id %>" class='bio text-primary'><%= @user.username %></h1>
+    <%= link_to 'edit', edit_user_path(@user) %>
+    <%= link_to 'Practices', user_practices_path(@user) %>
+  </div>
+<section>
